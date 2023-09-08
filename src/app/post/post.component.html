@@ -1,0 +1,27 @@
+<div class="container">
+  <h1 class="text-center">Posts</h1>
+  <hr />
+  <div class="text-center">
+    <div
+      *ngIf="isLoading"
+      class="spinner-border spinner-border-lg"
+      role="status"
+    >
+      <span class="visually-hidden">Loading...</span>
+    </div>
+  </div>
+  <div *ngIf="!isLoading">
+    <div class="row g-5">
+      <div *ngFor="let post of posts" class="col-3">
+        <div class="card" style="width: 18rem">
+          <div class="card-body">
+            <h5 class="card-title">{{ post.title }}</h5>
+            <hr />
+            <p class="card-text">{{ post.body }}</p>
+            <a [routerLink]="['/posts', post.id]" class="card-link">Details</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,72 @@
+<!-- <form class="container my-5">
+  <div class="form-group mb-3">
+    <label for="firstName">First Name </label>
+    <input
+      ngModel
+      required
+      pattern="^[A-Za-z]+$"
+      name="firstName"
+      #firstName="ngModel"
+      (change)="log(firstName)"
+      id="name"
+      type="text"
+      class="form-control"
+    />
+
+    <div class="alert alert-danger">
+      <div *ngIf="!firstName.valid && firstName.touched">
+        First Name is required
+      </div>
+
+      <div *ngIf="firstName.errors?.['required']">First Name is required</div>
+
+      <div *ngIf="firstName.errors?.['pattern']">Must be input letter</div>
+    </div>
+  </div>
+  <div class="form-group">
+    <label for="comment">Comment</label>
+    <textarea
+      ngModel
+      name="comment"
+      #comment="ngModel"
+      (change)="log(comment)"
+      id="comment"
+      cols="30"
+      rows="10"
+      class="form-control"
+    ></textarea>
+  </div>
+  <button class="btn btn-primary mt-3">Submit</button>
+</form> -->
+
+<div class="container">
+  <form [formGroup]="profileForm" (ngSubmit)="onSubmit()">
+    <div class="form-group">
+      <label for="first-name">First Name: </label>
+      <input
+        id="first-name"
+        class="form-control"
+        type="text"
+        formControlName="firstName"
+      />
+    </div>
+
+    <div class="form-group">
+      <label for="last-name">Last Name: </label>
+      <input
+        id="last-name"
+        class="form-control"
+        type="text"
+        formControlName="lastName"
+      />
+    </div>
+    <p>Complete the form to enable button.</p>
+    <button
+      class="btn btn-primary"
+      type="submit"
+      [disabled]="!profileForm.valid"
+    >
+      Submit
+    </button>
+  </form>
+</div>
